@@ -163,9 +163,7 @@
   renderGrid(PRODUCTS);
 
   function order(name, price){
-    var msg = "Order: " + name + " - " + price;
-    if (tg && tg.sendData){ tg.sendData(msg); }
-    else { alert(msg); }
+    window.open('https://payhip.com/indigoaiprojects', '_blank');
   }
 
   var sheet = document.getElementById('sheet');
