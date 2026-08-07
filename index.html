@@ -186,16 +186,13 @@ body{
   transform: scale(0.98);
 }
 .card .buy.soon {
-  background: color-mix(in srgb, var(--card-color) 35%, white);
+  background: var(--card-color);
   color: white;
   cursor: not-allowed;
-  box-shadow: none;
   font-size: 10px;
-  opacity: 0.75;
 }
 .card .buy.soon:hover {
   transform: none;
-  box-shadow: none;
 }
 
 .sheet {
@@ -298,7 +295,6 @@ body{
   transform: translateY(0);
 }
 .sheet .buybig.soon {
-  opacity: 0.75;
   cursor: not-allowed;
   pointer-events: none;
 }
