@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Katya | Digital Products</title>
 <meta name="description" content="Beautiful digital products — templates, prompts, designs, and more">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://payhip.com/payhip.js" type="text/javascript"></script>
 <style>
@@ -409,10 +412,10 @@ body{
 <div class="grid" id="grid"></div>
 
 <nav class="nav">
-  <a class="on"><span class="ic">🛍</span>Shop</a>
-  <a><span class="ic">📂</span>Categories</a>
-  <a><span class="ic">🧾</span>Orders</a>
-  <a><span class="ic">💬</span>Support</a>
+  <a class="on" id="nav-shop"><span class="ic">🛍</span>Shop</a>
+  <a id="nav-categories"><span class="ic">📂</span>Categories</a>
+  <a href="https://payhip.com/library" target="_blank" id="nav-orders"><span class="ic">🧾</span>Orders</a>
+  <a href="https://t.me/katyadigitalproducts" target="_blank" id="nav-support"><span class="ic">💬</span>Support</a>
 </nav>
 
 <div class="sheet" id="sheet">
@@ -513,6 +516,13 @@ chips.forEach(function(c){
     applyFilter(c.getAttribute('data-f'));
   };
 });
+
+document.getElementById('nav-shop').onclick = function(){
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+document.getElementById('nav-categories').onclick = function(){
+  document.getElementById('chips').scrollIntoView({behavior: 'smooth', block: 'center'});
+};
 
 (function openFromDeepLink(){
   var params = new URLSearchParams(location.search);
