@@ -175,6 +175,8 @@ body{
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-decoration: none;
+  display: inline-block;
 }
 .card .buy:hover {
   transform: scale(1.05);
@@ -184,11 +186,12 @@ body{
   transform: scale(0.98);
 }
 .card .buy.soon {
-  background: #e8e2da;
-  color: #a89f92;
+  background: color-mix(in srgb, var(--card-color) 35%, white);
+  color: white;
   cursor: not-allowed;
   box-shadow: none;
   font-size: 10px;
+  opacity: 0.75;
 }
 .card .buy.soon:hover {
   transform: none;
@@ -281,6 +284,11 @@ body{
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 6px 20px rgba(200, 180, 214, 0.2);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .sheet .buybig:hover {
   transform: translateY(-2px);
@@ -288,6 +296,15 @@ body{
 }
 .sheet .buybig:active {
   transform: translateY(0);
+}
+.sheet .buybig.soon {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.sheet .buybig.soon:hover {
+  transform: none;
+  box-shadow: 0 6px 20px rgba(200, 180, 214, 0.2);
 }
 .sheet .close {
   position: absolute;
@@ -401,7 +418,7 @@ body{
     <p id="s-desc">Instant digital download. Ready to use, no waiting — delivered right after purchase. Lifetime access and free updates.</p>
     <div class="buyrow">
       <span class="price" id="s-price"></span>
-      <button class="buybig" id="s-buy">Buy Now</button>
+      <a class="buybig" id="s-buy" href="#" data-theme="none">Buy Now</a>
     </div>
   </div>
 </div>
@@ -436,7 +453,7 @@ function renderGrid(list){
         '<div class="footer">' +
           '<span class="price">' + escapeHtml(p.price) + '</span>' +
           (p.buy
-            ? '<button class="buy" data-buy>Buy</button>'
+            ? '<a class="buy" href="https://payhip.com/b/' + p.buy + '" data-payhip-product-key="' + p.buy + '" data-theme="none">Buy</a>'
             : '<button class="buy soon" disabled>Coming soon</button>') +
         '</div>' +
       '</div>' +
@@ -444,26 +461,6 @@ function renderGrid(list){
   }).join('');
 }
 renderGrid(PRODUCTS);
-
-function order(name, price, buyKey){
-  if (buyKey){
-    // Payhip embed: a real <a data-payhip-product-key> click opens their
-    // checkout as a lightbox ON this page (payhip.js binds this on load) -
-    // build one on the fly so both the grid button and the modal button
-    // can trigger the same overlay instead of a full-page redirect.
-    var a = document.createElement('a');
-    a.href = 'https://payhip.com/b/' + buyKey;
-    a.setAttribute('data-payhip-product-key', buyKey);
-    a.setAttribute('data-theme', 'none');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    return;
-  }
-  // No Payhip key yet for this product - fall back to the general store
-  // front so the click still goes somewhere real, not a dead end.
-  window.open('https://payhip.com/indigoaiprojects', '_blank');
-}
 
 var sheet = document.getElementById('sheet');
 function openCardById(id){
@@ -475,9 +472,17 @@ function openCardById(id){
   document.getElementById('s-count').textContent = p.count + ' files included';
   document.getElementById('s-price').textContent = p.price;
   var sBuy = document.getElementById('s-buy');
-  sBuy.disabled = !p.buy;
-  sBuy.textContent = p.buy ? 'Buy Now' : 'Coming Soon';
-  sBuy.onclick = p.buy ? function(){ order(p.name, p.price, p.buy); } : null;
+  if (p.buy){
+    sBuy.href = 'https://payhip.com/b/' + p.buy;
+    sBuy.setAttribute('data-payhip-product-key', p.buy);
+    sBuy.classList.remove('soon');
+    sBuy.textContent = 'Buy Now';
+  } else {
+    sBuy.removeAttribute('href');
+    sBuy.removeAttribute('data-payhip-product-key');
+    sBuy.classList.add('soon');
+    sBuy.textContent = 'Coming Soon';
+  }
   sheet.classList.add('show');
 }
 function closeSheet(){ sheet.classList.remove('show'); }
@@ -486,11 +491,7 @@ sheet.addEventListener('click', function(e){ if (e.target === sheet) closeSheet(
 grid.addEventListener('click', function(e){
   var card = e.target.closest('.card');
   if (!card) return;
-  if (e.target.closest('.buy')){
-    var p = PRODUCTS.find(function(x){ return x.id === card.getAttribute('data-id'); });
-    if (p) order(p.name, p.price, p.buy);
-    return;
-  }
+  if (e.target.closest('.buy')) return; // let the real <a>/disabled button handle itself
   openCardById(card.getAttribute('data-id'));
 });
 
