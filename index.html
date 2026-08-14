@@ -221,6 +221,7 @@ body{
 }
 .sheet.show { display: flex; }
 .sheet .inner {
+  position: relative;
   background: white;
   width: 100%;
   border-radius: 36px 36px 0 0;
@@ -318,8 +319,9 @@ body{
 }
 .sheet .close {
   position: absolute;
-  top: -50px;
+  top: 12px;
   right: 20px;
+  z-index: 2;
   background: white;
   color: var(--text);
   border: none;
