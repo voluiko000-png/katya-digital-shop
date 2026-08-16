@@ -9,7 +9,6 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://payhip.com/payhip.js" type="text/javascript"></script>
 <style>
 :root {
   --bg: #fef9f3;
@@ -476,7 +475,7 @@ function renderGrid(list){
         '<div class="footer">' +
           '<span class="price">' + escapeHtml(p.price) + '</span>' +
           (p.buy
-            ? '<a class="buy" href="https://payhip.com/b/' + p.buy + '" data-payhip-product-key="' + p.buy + '" data-theme="none">Buy</a>'
+            ? '<a class="buy" href="#">Buy</a>'
             : '<button class="buy soon" disabled>Coming soon</button>') +
         '</div>' +
       '</div>' +
