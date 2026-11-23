@@ -1,4 +1,4 @@
-import{i as d,m as i,a as r,b as o,p as n,c as l,g as m,L as u,f as s}from"./motion-BXOkv9de.js";d();i("courses");r();function e(){document.getElementById("courses").innerHTML=m.map((a,t)=>`
+import{i as d,m as i,a as r,b as o,p as n,c as l,g as m,L as u,f as s}from"./motion-BlL3PlvL.js";d();i("courses");r();function e(){document.getElementById("courses").innerHTML=m.map((a,t)=>`
   <div class="course-card" data-reveal style="--d:${t*70}ms">
     <a href="product.html?id=${a.id}"><img src="${a.img}" alt=""></a>
     <div>
