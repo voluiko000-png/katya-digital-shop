@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — Warmly</title>
+<meta name="description" content="Browse every Softly pack: prompts, planners, templates, presets, apps and courses. Filter by category and price.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ec7a4c'/%3E%3C/svg%3E">
+  <script type="module" crossorigin src="./assets/shop.html-DPgH5HCS.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/motion-C2676ko6.js">
+  <link rel="stylesheet" crossorigin href="./assets/motion-BPCt9xjR.css">
+</head>
+<body>
+<div id="head"></div>
+<main class="wrap">
+  <div class="section-head" style="padding-top:30px">
+    <div>
+      <div class="crumbs">Shop</div>
+      <h1 class="h2" data-split data-i18n="shop.title">Everything, in one warm place</h1>
+      <p class="lead" style="margin-top:8px"><span id="shop-count">109</span> digital products across 23 categories — every one of them $2 under the usual market price.</p>
+    </div>
+  </div>
+
+  <div class="shop-layout">
+    <aside class="filters">
+      <h4 data-i18n="shop.cats">Categories</h4>
+      <div class="fcat" id="fcat"></div>
+      <h4 style="margin-top:18px" data-i18n="shop.maxPrice">Max price</h4>
+      <div class="range"><input id="price" type="range" min="4" max="49" value="49"><span id="price-label">Any</span></div>
+      <h4 style="margin-top:18px" data-i18n="shop.type">Type</h4>
+      <div class="fcat" id="ftype"></div>
+    </aside>
+
+    <div>
+      <div class="sort-row">
+        <label class="searchbox"><span class="muted">⌕</span><input id="q" type="search" placeholder="Search packs, formats, ideas…" data-i18n-ph="shop.search"></label>
+        <select class="sort" id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="save">Biggest saving</option>
+        </select>
+      </div>
+      <div class="spread" style="margin-bottom:12px">
+        <span class="count" id="count"></span>
+        <button class="chip" id="reset" data-i18n="shop.reset">Reset filters</button>
+      </div>
+      <div class="grid grid-4" id="grid"></div>
+      <div id="more"></div>
+    </div>
+  </div>
+</main>
+<div id="foot"></div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website & app development — Warmly</title>
+<meta name="description" content="Small websites, landing pages and one-file apps from €10. Fast delivery, clean code, no monthly fees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ec7a4c'/%3E%3C/svg%3E">
+<style>
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #fff7ef; color: #2c2340; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  header { height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 20px; font-weight: 800; display: flex; gap: 10px; align-items: center; text-decoration: none; color: inherit; }
+  .mark { width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(135deg,#f7b955,#ec7a4c); }
+  .hero { padding: 40px 0 20px; }
+  h1 { font-size: 54px; line-height: 1.02; letter-spacing: -2.4px; margin: 0; max-width: 760px; }
+  .lead { font-size: 17px; line-height: 1.6; color: #6b5d84; max-width: 560px; margin-top: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .card { background: #fff; border-radius: 22px; padding: 22px; box-shadow: 0 24px 44px -38px rgba(120,60,40,.8); }
+  .card.best { outline: 2px solid #2c2340; }
+  .tag { font-size: 11px; font-weight: 900; letter-spacing: 1px; color: #c98a3c; text-transform: uppercase; }
+  .price { font-size: 38px; font-weight: 900; letter-spacing: -1.6px; margin: 10px 0 4px; }
+  .price small { font-size: 13px; font-weight: 700; color: #a393b8; }
+  ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+  li { font-size: 13.5px; color: #5d5077; display: flex; gap: 8px; }
+  li:before { content: '✦'; color: #ec7a4c; }
+  .btn { display: block; text-align: center; background: #2c2340; color: #fff; border-radius: 14px; padding: 15px; font-weight: 800; margin-top: 18px; text-decoration: none; }
+  .btn.gold { background: #ffd166; color: #2c2340; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+  .step { background: #fff; border-radius: 18px; padding: 18px; font-size: 13.5px; color: #5d5077; }
+  .step b { display: block; color: #2c2340; margin-bottom: 6px; font-size: 15px; }
+  .faq { margin-top: 34px; display: grid; gap: 10px; }
+  details { background: #fff; border-radius: 16px; padding: 16px 18px; }
+  summary { font-weight: 800; cursor: pointer; }
+  details p { margin: 10px 0 0; color: #5d5077; font-size: 13.5px; line-height: 1.6; }
+  footer { background: #2c2340; color: #cbbcd9; margin-top: 50px; padding: 26px 0; font-size: 13px; }
+  @media (max-width: 900px) { h1 { font-size: 36px; } .grid, .steps { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="logo" href="index.html"><span class="mark"></span>Warmly</a>
+  <a href="index.html" style="font-size:14px;font-weight:700;color:#6b5d84;text-decoration:none">← Back to shop</a>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="tag">Websites · Landing pages · Small apps</div>
+    <h1>We build the page your product deserves</h1>
+    <p class="lead">A one-page site, a landing page or a small offline app — from €10. Delivered in days, not months. No subscriptions, the files are yours.</p>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="tag">Starter</div>
+      <div class="price">€10 <small>one page</small></div>
+      <ul><li>One-page site, mobile ready</li><li>Your text and photos</li><li>Delivery in 2–3 days</li><li>Source files included</li></ul>
+      <a class="btn" href="mailto:hello@example.com?subject=Website%20Starter%20%E2%82%AC10">Order starter</a>
+    </div>
+    <div class="card best">
+      <div class="tag">Most picked</div>
+      <div class="price">€29 <small>landing page</small></div>
+      <ul><li>Landing page with sections</li><li>Forms and payment button</li><li>Delivery in 3–5 days</li><li>Two rounds of changes</li></ul>
+      <a class="btn gold" href="mailto:hello@example.com?subject=Landing%20%E2%82%AC29">Order landing</a>
+    </div>
+    <div class="card">
+      <div class="tag">App</div>
+      <div class="price">€59 <small>small app</small></div>
+      <ul><li>Offline one-file web app</li><li>Your data stays local</li><li>Delivery in 5–7 days</li><li>Source files included</li></ul>
+      <a class="btn" href="mailto:hello@example.com?subject=App%20%E2%82%AC59">Order app</a>
+    </div>
+  </section>
+
+  <h2 style="margin-top:44px;font-size:28px;letter-spacing:-1px">How it works</h2>
+  <div class="steps">
+    <div class="step"><b>1. Write to us</b>One message: what you sell and what you need.</div>
+    <div class="step"><b>2. Pick a package</b>We confirm the price and the date.</div>
+    <div class="step"><b>3. We build</b>You see a preview link the same day.</div>
+    <div class="step"><b>4. Handover</b>Files, domain setup, done.</div>
+  </div>
+
+  <section class="faq">
+    <details open><summary>Why from €10?</summary><p>Because a simple one-page site should not cost a thousand. We keep the scope small on purpose: your text, your photos, one clean page.</p></details>
+    <details><summary>What do I get at the end?</summary><p>The finished site files, the source, and help linking your domain. Nothing is locked to a subscription.</p></details>
+    <details><summary>Can you also sell my digital products?</summary><p>Yes — that is exactly what Warmly is built for. We connect your products, prices and download delivery.</p></details>
+    <details><summary>Do you work in my language?</summary><p>The shop itself is in English. Sites can be built in English, Romanian, Russian or French.</p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">Warmly Store · Websites and apps from €10 · hello@example.com</div></footer>
+</body>
+</html>
