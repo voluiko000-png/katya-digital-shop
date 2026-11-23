@@ -1,592 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Katya | Digital Products</title>
-<meta name="description" content="Beautiful digital products — templates, prompts, designs, and more">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>
-:root {
-  --bg: #fef9f3;
-  --light: #fef4ec;
-  --accent1: #f8b4d6;
-  --accent2: #c8d5f5;
-  --accent3: #d4e8f0;
-  --accent4: #f5e4c3;
-  --accent5: #dfe8d9;
-  --text: #5a5a5a;
-  --dark: #3d3d3d;
-}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  padding-bottom: 90px;
-  min-height: 100vh;
-}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warmly — Soft digital goods for people who make things</title>
+<meta name="description" content="Templates, prompt packs, planners, presets, mini apps and 7-day courses. Instant delivery, lifetime updates, every pack $2 under the market price.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ec7a4c'/%3E%3C/svg%3E">
 
-.header {
-  background: linear-gradient(135deg, #fac7e0 0%, #c8d5f5 50%, #d4e8f0 100%);
-  color: var(--dark);
-  padding: 32px 20px;
-  text-align: center;
-  border-radius: 0 0 40px 40px;
-  box-shadow: 0 8px 24px rgba(200, 213, 245, 0.2);
-}
-.header h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  letter-spacing: -0.5px;
-}
-.header p {
-  font-size: 14px;
-  opacity: 0.85;
-  font-weight: 500;
-}
 
-.chips {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 18px 16px 8px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.chips::-webkit-scrollbar { display: none; }
-.chip {
-  flex: 0 0 auto;
-  background: white;
-  color: var(--text);
-  border: none;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 28px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.chip:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.chip.on {
-  background: linear-gradient(135deg, #f8b4d6 0%, #c8d5f5 100%);
-  color: white;
-  box-shadow: 0 4px 16px rgba(200, 180, 214, 0.3);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 14px;
-  padding: 20px;
-}
-.card {
-  background: white;
-  border-radius: 24px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-}
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-}
-.card.cat-ai { --card-color: #5b6ee8; }
-.card.cat-coloring { --card-color: #ec4899; }
-.card.cat-patterns { --card-color: #14b8a6; }
-.card.cat-notion { --card-color: #f59e0b; }
-.card.cat-planners { --card-color: #f43f5e; }
-.card.cat-career { --card-color: #22c55e; }
-.card.cat-svg { --card-color: #a855f7; }
-.card.cat-stickers { --card-color: #10b981; }
-.card.cat-prints { --card-color: #d946ef; }
-.card.cat-canva { --card-color: #84cc16; }
-.card.cat-fitness { --card-color: #f97316; }
-.card.cat-finance { --card-color: #059669; }
-.card.cat-wedding { --card-color: #f472b6; }
-.card.cat-kids { --card-color: #eab308; }
-.card.cat-recipes { --card-color: #ef4444; }
-.card.cat-fonts { --card-color: #8b5cf6; }
-.card.cat-clipart { --card-color: #06b6d4; }
-.card.cat-presets { --card-color: #6366f1; }
-.card.cat-kdp { --card-color: #d97706; }
-.card.cat-cartoons { --card-color: #0ea5e9; }
-.card.cat-other { --card-color: #64748b; }
-
-.card .img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  background: linear-gradient(135deg, var(--card-color) 0%, rgba(255,255,255,0.6) 100%);
-  display: block;
-}
-.card .body {
-  padding: 14px 12px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.card .cat {
-  color: var(--card-color);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  opacity: 0.8;
-}
-.card .name {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 8px;
-  flex: 1;
-  color: var(--dark);
-}
-.card .count {
-  display: inline-block;
-  background: var(--light);
-  color: var(--card-color);
-  font-size: 10px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 14px;
-  margin-bottom: 10px;
-}
-.card .footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0,0,0,0.04);
-}
-.card .price {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--card-color);
-}
-.card .buy {
-  background: var(--card-color);
-  color: white;
-  border: none;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 8px 14px;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-decoration: none;
-  display: inline-block;
-}
-.card .buy:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.card .buy:active {
-  transform: scale(0.98);
-}
-.card .buy.soon {
-  background: var(--card-color);
-  color: white;
-  cursor: not-allowed;
-  font-size: 10px;
-}
-.card .buy.soon:hover {
-  transform: none;
-}
-
-.sheet {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.3);
-  display: none;
-  align-items: flex-end;
-  z-index: 100;
-  padding-top: 40px;
-  backdrop-filter: blur(4px);
-}
-.sheet.show { display: flex; }
-.sheet .inner {
-  position: relative;
-  background: white;
-  width: 100%;
-  border-radius: 36px 36px 0 0;
-  padding: 28px 20px 32px;
-  max-height: 88vh;
-  overflow-y: auto;
-  animation: slideUp 0.3s ease;
-}
-@keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.sheet img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 24px;
-  margin-bottom: 20px;
-}
-.sheet .cat {
-  color: #999;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-}
-.sheet h3 {
-  font-size: 24px;
-  font-weight: 800;
-  margin: 8px 0 12px;
-  color: var(--dark);
-}
-.sheet .count {
-  display: inline-block;
-  background: var(--light);
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 14px;
-  margin-bottom: 16px;
-}
-.sheet p {
-  color: #7a7a7a;
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-.sheet .buyrow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.sheet .price {
-  font-size: 30px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ff3d94 0%, #ff8a3d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.sheet .buybig {
-  flex: 1;
-  background: linear-gradient(135deg, #ff3d94 0%, #ff8a3d 100%);
-  color: white;
-  border: none;
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  padding: 17px 24px;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(255, 61, 148, 0.45);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.sheet .buybig:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(255, 61, 148, 0.55);
-}
-.sheet .buybig:active {
-  transform: translateY(0);
-}
-.sheet .buybig.soon {
-  cursor: not-allowed;
-  pointer-events: none;
-  background: linear-gradient(135deg, #d9a8c2 0%, #d9b89a 100%);
-  box-shadow: none;
-}
-.sheet .buybig.soon:hover {
-  transform: none;
-  box-shadow: none;
-}
-.sheet .close {
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  z-index: 2;
-  background: white;
-  color: var(--text);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-}
-.sheet .close:hover {
-  transform: scale(1.1);
-}
-
-.empty {
-  grid-column: 1/-1;
-  color: #bbb;
-  text-align: center;
-  padding: 60px 20px;
-  font-size: 16px;
-}
-
-.nav {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: white;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0 18px;
-  box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
-}
-.nav a {
-  color: #bbb;
-  font-size: 11px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-.nav a:hover {
-  color: var(--text);
-}
-.nav a.on {
-  color: #f8b4d6;
-  font-weight: 600;
-}
-.nav .ic { font-size: 20px; }
-</style>
+  <script type="module" crossorigin src="./assets/index.html-D4_mz8Hh.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/motion-C2676ko6.js">
+  <link rel="stylesheet" crossorigin href="./assets/motion-BPCt9xjR.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-tn0RQdqM.css">
 </head>
 <body>
+<div id="head"></div>
 
-<div class="header">
-  <h1>✨ Katya</h1>
-  <p>Premium Digital Products</p>
-</div>
+<main>
+  <!-- HERO -->
+  <section class="hero" data-parallax>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow"><i></i><span data-i18n="hero.badge">New drop inside every video · weekly restock</span></span>
+        <h1 class="h1" data-split data-i18n="hero.title">Warm digital goods that feel handmade</h1>
+        <p class="lead" data-i18n="hero.lead">Templates, prompts, planners, presets, micro apps and short courses — made to be used, not admired.</p>
+        <div class="ctas">
+          <a class="btn btn-dark" href="#bestsellers" data-i18n="hero.cta1">Shop bestsellers</a>
+          <a class="btn btn-warm" href="bundles.html"><span data-i18n="hero.cta2">Get the all-in bundle</span> <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="proof">
+          <div class="avatars">
+            <span style="background:linear-gradient(140deg,#f7b955,#ec7a4c)"></span>
+            <span style="background:linear-gradient(140deg,#b9f0c8,#5fc98a)"></span>
+            <span style="background:linear-gradient(140deg,#d7ccfb,#8a6cf0)"></span>
+            <span style="background:linear-gradient(140deg,#ffb2a1,#ff6f91)"></span>
+          </div>
+          <span><b>109</b> digital products · instant download · 7-day refunds</span>
+        </div>
+      </div>
 
-<div class="chips" id="chips">
-  <button class="chip on" data-f="all">All</button>
-  <button class="chip" data-f="AI Prompts">AI Prompts</button>
-  <button class="chip" data-f="Coloring">Coloring</button>
-  <button class="chip" data-f="Patterns">Patterns</button>
-  <button class="chip" data-f="Notion">Notion</button>
-  <button class="chip" data-f="Planners">Planners</button>
-  <button class="chip" data-f="Career">Career</button>
-  <button class="chip" data-f="SVG Files">SVG Files</button>
-  <button class="chip" data-f="Stickers">Stickers</button>
-  <button class="chip" data-f="Prints">Prints</button>
-  <button class="chip" data-f="Canva">Canva</button>
-  <button class="chip" data-f="Fitness">Fitness</button>
-  <button class="chip" data-f="Finance">Finance</button>
-  <button class="chip" data-f="Wedding">Wedding</button>
-  <button class="chip" data-f="Kids">Kids</button>
-  <button class="chip" data-f="Recipes">Recipes</button>
-  <button class="chip" data-f="Fonts">Fonts</button>
-  <button class="chip" data-f="Clipart">Clipart</button>
-  <button class="chip" data-f="Presets">Presets</button>
-  <button class="chip" data-f="KDP Books">KDP Books</button>
-  <button class="chip" data-f="Cartoons">Cartoons</button>
-</div>
-
-<div class="grid" id="grid"></div>
-
-<nav class="nav">
-  <a class="on" id="nav-shop"><span class="ic">🛍</span>Shop</a>
-  <a id="nav-categories"><span class="ic">📂</span>Categories</a>
-  <a href="https://payhip.com/library" target="_blank" id="nav-orders"><span class="ic">🧾</span>Orders</a>
-  <a href="https://t.me/katyadigitalproducts" target="_blank" id="nav-support"><span class="ic">💬</span>Support</a>
-</nav>
-
-<div class="sheet" id="sheet">
-  <div class="inner">
-    <button class="close" onclick="closeSheet()">&times;</button>
-    <img id="s-img" src="" alt="">
-    <div class="cat" id="s-cat"></div>
-    <h3 id="s-name"></h3>
-    <div class="count" id="s-count"></div>
-    <p id="s-desc">Instant digital download. Ready to use, no waiting — delivered right after purchase. Lifetime access and free updates.</p>
-    <div class="buyrow">
-      <span class="price" id="s-price"></span>
-      <a class="buybig" id="s-buy" href="#" data-theme="none">Buy Now</a>
+      <div class="stage">
+        <div class="scene">
+          <span class="fit-chip"><i></i>Instant delivery</span>
+          <div class="obj sphere floaty" data-depth="18" style="width:150px;height:150px;left:70px;top:110px"></div>
+          <div class="obj cube drift" data-depth="10" style="width:104px;height:104px;left:250px;top:190px;transform:rotate(14deg)"></div>
+          <div class="obj ball floaty" data-depth="26" style="width:84px;height:84px;right:110px;top:70px;animation-delay:-3s"></div>
+          <div class="obj sphere" style="width:46px;height:46px;right:180px;bottom:180px;filter:blur(1px);opacity:.85"></div>
+          <div class="fit-card" style="pointer-events:none">
+            <img src="img/w_p01.jpg" alt="">
+            <div>
+              <b>AI Prompt Library — 120 prompts</b>
+              <div class="small muted">PDF · 120 prompts · lifetime updates</div>
+            </div>
+            <div class="row" style="margin-left:auto">
+              <div class="price">$12<span class="old">$14</span></div>
+              <span class="add-btn" aria-hidden="true">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<script>
-var tg = window.Telegram && window.Telegram.WebApp;
-if (tg){ try{ tg.ready(); tg.expand(); }catch(e){} }
+  <!-- ВИТРИНА: три карточки с фото (как в первом макете) -->
+  <section class="section" id="bestsellers">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="h2" data-split data-i18n="section.best">Everyone is grabbing these</h2>
+          <p class="lead" data-i18n="section.best.sub">Hand-picked packs with the highest downloads this month.</p>
+        </div>
+        <a class="link" href="shop.html"><span data-i18n="card.seeAll">See all products</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="grid grid-3" id="best-grid" style="gap:16px"></div>
+    </div>
+  </section>
 
-// Inside Telegram, buy via Stars (no PayPal/bank involved) using openInvoice() -
-// sendData() does NOT work here because this Mini App is launched from the chat's
-// persistent menu button, not a keyboard button (sendData is keyboard-button-only,
-// confirmed live 16.08.2026: click did nothing, no error, no message reached the bot).
-// openInvoice() has no such restriction - opens Telegram's native Stars sheet directly.
-// Ссылки на наш Gumroad (кошелёк подключён). Payhip больше не используется.
-var GUMROAD_LINKS = {
-  "p01": "",                       // Complete AI Prompts Bundle - файла нет
-  "p02": "",
-  "p03": "",
-  "p04": "https://voluiko.gumroad.com/l/qmfedq", // Executive Coach Landing Page (HTML)
-  "p05": "",
-  "p06": "",
-  "p07": "",
-  "p08": "",
-  "p09": "",
-  "p10": "",
-  "p11": "",
-  "p12": "https://voluiko.gumroad.com/l/ntgxev", // Tax Savings for Freelancers
-  "p13": "",
-  "p14": "",
-  "p15": "",
-  "p16": "",
-  "p17": "",
-  "p18": "",
-  "p19": "",
-  "p20": ""
-};
+  <!-- COURSES -->
+  <section class="section" id="courses" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="h2" data-split data-i18n="section.courses">Short courses, real results</h2>
+          <p class="lead" data-i18n="section.courses.sub">Seven-day sprints you can actually finish — under 20 minutes a day.</p>
+        </div>
+        <a class="link" href="courses.html">All courses <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="grid grid-3" id="course-grid"></div>
+    </div>
+  </section>
 
-function buyClick(e, id){
-  e.preventDefault();
-  var p = PRODUCTS.find(function(x){ return x.id === id; });
-  if (!p) return;
-  var gum = GUMROAD_LINKS[id];
-  // Внутри Telegram - Stars (если счёт есть)
-  if (tg && tg.openInvoice && p.invoice) {
-    try { tg.openInvoice(p.invoice, function(status){ if (status === 'paid') location.reload(); }); return; }
-    catch (err) { /* идём на Gumroad ниже */ }
-    return;
-  }
-  // Иначе - наш Gumroad, НИКОГДА Payhip
-  if (gum) { window.open(gum, '_blank'); return; }
-  alert('This product is coming soon.');
-}
 
-var PRODUCTS = [{"id":"p01","img":"covers/p01_titled.jpg","cat":"AI Prompts","name":"Complete AI Prompts Bundle","count":8,"price":"$4.99","buy":"oqUcr","invoice":"https://t.me/$_h7gQrqSCEjkGwAA387b1Jj7RR4"},{"id":"p02","img":"covers/p02_titled.jpg","cat":"Coloring","name":"12 Printable Mandala Coloring Pages","count":12,"price":"$6.99","buy":"hul5z","invoice":"https://t.me/$Cs9TO7qSCEjlGwAAVsvMABw76OM"},{"id":"p03","img":"covers/p03_titled.jpg","cat":"Patterns","name":"Knitting & Crochet Pattern Bundle","count":12,"price":"$6.99","buy":"EYF7G","invoice":"https://t.me/$Rd247LqSCEjmGwAAKV_Uag3bMS4"},{"id":"p04","img":"covers/p04_titled.jpg","cat":"Notion","name":"Notion Templates Mega Bundle","count":12,"price":"$6.99","buy":"NUcJ0","invoice":"https://t.me/$jkmjAbqSCEjnGwAASGur0HW_KNo"},{"id":"p05","img":"covers/p05_titled.jpg","cat":"Planners","name":"Digital Planner Bundle","count":12,"price":"$6.99","buy":"9ADiQ","invoice":"https://t.me/$d_QscrqSCEjoGwAA6uXWAnJg698"},{"id":"p06","img":"covers/p06_titled.jpg","cat":"Career","name":"Resume & Career Kit Bundle","count":12,"price":"$6.99","buy":"r81AI","invoice":"https://t.me/$GWf7_bqSCEjpGwAADRFCKip4z4M"},{"id":"p07","img":"covers/p07_titled.jpg","cat":"SVG Files","name":"SVG & Cricut Files Bundle","count":10,"price":"$5.99","buy":"LrE7Q","invoice":"https://t.me/$VgH1Q7qSCEjqGwAA32XOanTpatI"},{"id":"p08","img":"covers/p08_titled.jpg","cat":"Stickers","name":"Digital Stickers Mega Pack","count":14,"price":"$7.99","buy":"Bx4j2","invoice":"https://t.me/$VA54qbqSCEjrGwAAbQMiF6Kx62M"},{"id":"p09","img":"covers/p09_titled.jpg","cat":"Prints","name":"Wall Art Prints Bundle","count":12,"price":"$6.99","buy":"2rGjJ","invoice":"https://t.me/$wF6QW7qSCEjsGwAA8WOa9_6XV08"},{"id":"p10","img":"covers/p10_titled.jpg","cat":"Canva","name":"Canva Templates Mega Bundle","count":12,"price":"$6.99","buy":"Y58Cd","invoice":"https://t.me/$1sZLarqSCEjtGwAA1fMXL9hDGHw"},{"id":"p11","img":"covers/p11_titled.jpg","cat":"Fitness","name":"Fitness & Meal Plan Bundle","count":12,"price":"$6.99","buy":"RPzSJ","invoice":"https://t.me/$t5XHCLqSCEjuGwAAj_Y7GmAGNRE"},{"id":"p12","img":"covers/p12_titled.jpg","cat":"Finance","name":"Budget Planner Bundle","count":12,"price":"$6.99","buy":"OjWAh","invoice":"https://t.me/$n1oAQbqSCEjvGwAAIZwl2gQoz9Y"},{"id":"p13","img":"covers/p13_titled.jpg","cat":"Wedding","name":"Wedding Invitations Bundle","count":10,"price":"$5.99","buy":"JqNrm","invoice":"https://t.me/$4_301LqSCEjwGwAA2gM2sF-O7fw"},{"id":"p14","img":"covers/p14_titled.jpg","cat":"Kids","name":"Kids Activity Mega Pack","count":10,"price":"$5.99","buy":"ZY0f4","invoice":"https://t.me/$poNjV7qSCEjxGwAAbwehgFeArXc"},{"id":"p15","img":"covers/p15_titled.jpg","cat":"Recipes","name":"Recipe & Meal Planner Bundle","count":12,"price":"$6.99","buy":"KqYjJ","invoice":"https://t.me/$SR7i2LqSCEjyGwAAlh0OXss--F8"},{"id":"p16","img":"covers/p16_titled.jpg","cat":"Fonts","name":"Fonts & Lettering Bundle","count":10,"price":"$5.99","buy":"TJ5np","invoice":"https://t.me/$tduVyrqSCEjzGwAAymMNvdz1z58"},{"id":"p17","img":"covers/p17_titled.jpg","cat":"Clipart","name":"Clipart & Icons Mega Bundle","count":14,"price":"$7.99","buy":"T14Nn","invoice":"https://t.me/$gF7pkrqSCEj0GwAADUeGUYCzigQ"},{"id":"p18","img":"covers/p18_titled.jpg","cat":"Presets","name":"Lightroom Presets Bundle","count":10,"price":"$5.99","buy":"fzx16","invoice":"https://t.me/$3mNZ0bqSCEj1GwAAAP6dAl8xxhM"},{"id":"p19","img":"covers/p19_titled.jpg","cat":"KDP Books","name":"Low-Content KDP Books Bundle","count":13,"price":"$6.99","buy":"P2RT1","invoice":"https://t.me/$LsifO7qSCEj2GwAA9LJsQWoaNPc"},{"id":"p20","img":"covers/p20.jpg","cat":"Cartoons","name":"Kids Cartoon Bundle","count":10,"price":"$5.99","buy":"LMdFl","invoice":"https://t.me/$t2CYmrqSCEj3GwAA-_2YHUUh6GM"}];
+  <!-- NEW DROPS -->
+  <section class="section" id="new-drops" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="h2" data-split data-i18n="section.new">Fresh from the studio</h2>
+          <p class="lead" data-i18n="section.new.sub">Newly added packs — priced the same way: $2 under the market.</p>
+        </div>
+        <a class="link" href="shop.html?sort=featured">See what is new <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="grid grid-3" id="new-grid" style="gap:14px"></div>
+    </div>
+  </section>
 
-var catMap = {"AI Prompts":"ai","Coloring":"coloring","Patterns":"patterns","Notion":"notion","Planners":"planners","Career":"career","SVG Files":"svg","Stickers":"stickers","Prints":"prints","Canva":"canva","Fitness":"fitness","Finance":"finance","Wedding":"wedding","Kids":"kids","Recipes":"recipes","Fonts":"fonts","Clipart":"clipart","Presets":"presets","KDP Books":"kdp","Cartoons":"cartoons"};
 
-function escapeHtml(s){
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+  <!-- УСЛУГА: сайты и приложения -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <a href="services.html" style="display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;
+         background:#2c2340;color:#fff;border-radius:24px;padding:24px 28px">
+        <div>
+          <div style="color:#ffd166;font-weight:900;letter-spacing:1px;font-size:11.5px">WEBSITES &amp; APPS</div>
+          <div style="font-size:24px;font-weight:900;margin-top:6px">Need a website or a small app?</div>
+          <div style="color:#d9c9b8;font-size:13.5px;margin-top:6px">One-page sites and landing pages from €10, delivered in days.</div>
+        </div>
+        <span style="background:#ffd166;color:#2c2340;border-radius:14px;padding:14px 22px;font-weight:900;font-size:14px;white-space:nowrap">See packages →</span>
+      </a>
+    </div>
+  </section>
 
-var grid = document.getElementById('grid');
-function renderGrid(list){
-  if (!list.length){
-    grid.innerHTML = '<div class="empty">No products in this category yet.</div>';
-    return;
-  }
-  grid.innerHTML = list.map(function(p, i){
-    var loadAttr = i < 12 ? 'loading="eager"' : 'loading="lazy"';
-    var catSlug = catMap[p.cat] || 'other';
-    return '<div class="card cat-' + catSlug + '" data-id="' + p.id + '">' +
-      '<img class="img" ' + loadAttr + ' src="' + p.img + '" alt="">' +
-      '<div class="body">' +
-        '<div class="cat">' + escapeHtml(p.cat) + '</div>' +
-        '<div class="name">' + escapeHtml(p.name) + '</div>' +
-        '<div class="count">' + p.count + ' files</div>' +
-        '<div class="footer">' +
-          '<span class="price">' + escapeHtml(p.price) + '</span>' +
-          (p.buy
-            ? '<a class="buy" href="#">Buy</a>'
-            : '<button class="buy soon" disabled>Coming soon</button>') +
-        '</div>' +
-      '</div>' +
-    '</div>';
-  }).join('');
-}
-renderGrid(PRODUCTS);
+  <!-- CATEGORIES -->
+  <section class="section" id="categories" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="h2" data-split data-i18n="section.cats">Every way to make something better</h2>
+          <p class="lead" data-i18n="section.cats.sub">From prompt packs to crochet patterns, planners to KDP interiors.</p>
+        </div>
+        <a class="link" href="shop.html">Browse everything <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="cat-grid" id="cat-grid"></div>
+    </div>
+  </section>
 
-var sheet = document.getElementById('sheet');
-function openCardById(id){
-  var p = PRODUCTS.find(function(x){ return x.id === id; });
-  if (!p) return;
-  document.getElementById('s-img').src = p.img;
-  document.getElementById('s-cat').textContent = p.cat;
-  document.getElementById('s-name').textContent = p.name;
-  document.getElementById('s-count').textContent = p.count + ' files included';
-  document.getElementById('s-price').textContent = p.price;
-  var sBuy = document.getElementById('s-buy');
-  if (p.buy){
-    sBuy.href = GUMROAD_LINKS[p.id] || '#';
-    sBuy.setAttribute('data-payhip-product-key', p.buy);
-    sBuy.classList.remove('soon');
-    sBuy.textContent = 'Buy Now';
-    sBuy.onclick = function(e){ buyClick(e, p.id); };
-  } else {
-    sBuy.removeAttribute('href');
-    sBuy.removeAttribute('data-payhip-product-key');
-    sBuy.classList.add('soon');
-    sBuy.textContent = 'Coming Soon';
-  }
-  sheet.classList.add('show');
-}
-function closeSheet(){ sheet.classList.remove('show'); }
-sheet.addEventListener('click', function(e){ if (e.target === sheet) closeSheet(); });
+  <!-- BUNDLE -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="bundle-box" data-reveal>
+        <div>
+          <div class="tag" data-i18n="cta.bundle.tag">BEST VALUE</div>
+          <h2 class="h2" style="margin-top:8px" data-i18n="cta.bundle.title">The All-in-One Bundle</h2>
+          <p style="margin-top:10px;max-width:520px;color:#e5d9f0" data-i18n="cta.bundle.body">Every pack in the store — plus everything we add later. One payment, lifetime updates.</p>
+        </div>
+        <div style="text-align:right">
+          <div class="price">$49<span class="old">$199</span></div>
+          <a class="btn btn-gold" href="bundles.html" style="margin-top:10px" data-i18n="cta.bundle.btn">Get the bundle</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-grid.addEventListener('click', function(e){
-  var card = e.target.closest('.card');
-  if (!card) return;
-  if (e.target.closest('.buy')) { buyClick(e, card.getAttribute('data-id')); return; }
-  openCardById(card.getAttribute('data-id'));
-});
+  <!-- VALUES -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2" style="margin-bottom:18px" data-split data-i18n="section.why">Why people come back</h2>
+      <div class="values" id="values"></div>
+    </div>
+  </section>
 
-var chips = document.querySelectorAll('.chip');
-function applyFilter(f){
-  renderGrid(f === 'all' ? PRODUCTS : PRODUCTS.filter(function(p){ return p.cat === f; }));
-}
-chips.forEach(function(c){
-  c.onclick = function(){
-    chips.forEach(function(x){ x.classList.remove('on'); });
-    c.classList.add('on');
-    applyFilter(c.getAttribute('data-f'));
-  };
-});
+  <!-- REVIEWS -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="h2" data-split data-i18n="section.reviews">Words from people who downloaded</h2>
+        </div>
+        <a class="link" href="#faq">Anyone can message support <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="review-grid" id="reviews"></div>
+    </div>
+  </section>
 
-document.getElementById('nav-shop').onclick = function(){
-  window.scrollTo({top: 0, behavior: 'smooth'});
-};
-document.getElementById('nav-categories').onclick = function(){
-  document.getElementById('chips').scrollIntoView({behavior: 'smooth', block: 'center'});
-};
+  <!-- FAQ -->
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap faq">
+      <div>
+        <h2 class="h2" data-split data-i18n="section.faq">Questions, answered</h2>
+        <p class="lead" style="margin-top:10px">Everything about delivery, prices, refunds and licenses.</p>
+        <div class="value" style="margin-top:16px">
+          <b>Still unsure?</b>
+          <p>Message us — we answer in under 24 hours and help pick the right pack.</p>
+          <a class="btn btn-sm btn-light" href="#faq" style="margin-top:12px">Contact support</a>
+        </div>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+</main>
 
-(function openFromDeepLink(){
-  var params = new URLSearchParams(location.search);
-  var cat = params.get('cat') || (tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param);
-  if (cat) {
-    var chip = Array.prototype.find.call(chips, function(c){ return c.getAttribute('data-f') === cat; });
-    if (chip) { chip.click(); chip.scrollIntoView({behavior:'smooth', inline:'center'}); return; }
-  }
-  var pid = params.get('p') || (location.hash.match(/p=([a-z0-9]+)/i) || [])[1];
-  if (!pid) return;
-  pid = pid.replace(/^0*/, '').padStart(2, '0');
-  openCardById('p' + pid);
-})();
-</script>
-
+<div id="foot"></div>
 </body>
 </html>
